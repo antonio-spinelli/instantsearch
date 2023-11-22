@@ -154,7 +154,7 @@ export function createInstantSearchRouterNext<TRouteState = UiState>(
       // We need to do this because there's an error when using i18n on the root path
       // it says for example `pages/fr.js` doesn't exist
       if (singletonRouter.locale) {
-        url = url.replace(`/${singletonRouter.locale}`, '');
+        url = url.replace(new RegExp(`(?<=^https?:\/\/[^\/]+)\/${singletonRouter.locale}(?=\/|$)`, 'i'), '');
       }
 
       // No need to provide the second argument, Next.js will know what to do
